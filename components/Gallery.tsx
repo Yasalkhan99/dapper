@@ -42,8 +42,9 @@ export function Gallery() {
             </h2>
           </div>
           <p className="max-w-sm text-muted-fg">
-            Ye chaar photos seedha aap ke {`public/`} folder se aa rahi hain—nayi
-            files add karo to {`lib/media.ts`} aur is array mein map karo.
+            Abhi sab tiles ek hi hi-res shop photo se crop hain taake zoom par
+            pixels na phatain—nayi photos {`public/`} mein add karke{" "}
+            {`lib/media.ts`} update karo.
           </p>
         </div>
 
@@ -58,6 +59,7 @@ export function Gallery() {
                 alt={shot.alt}
                 fill
                 sizes="(min-width: 1024px) 25vw, 50vw"
+                quality={90}
                 className={`transition-transform duration-700 hover:scale-105 ${shot.className}`}
               />
             </figure>

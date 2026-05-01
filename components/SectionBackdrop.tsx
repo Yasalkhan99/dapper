@@ -30,7 +30,7 @@ export function SectionBackdrop({
         fill
         className={`object-cover object-center ${imageOpacityClass}`}
         sizes="100vw"
-        quality={75}
+        quality={88}
       />
       <div className={`absolute inset-0 ${washClassName}`} />
     </div>

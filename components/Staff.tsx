@@ -63,6 +63,7 @@ export function Staff() {
                   src={s.image}
                   alt={s.imageAlt}
                   fill
+                  quality={90}
                   className={`transition-transform duration-500 hover:scale-[1.03] ${s.imgClass}`}
                   sizes="(min-width: 768px) 33vw, 100vw"
                 />

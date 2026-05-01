@@ -91,7 +91,7 @@ function BookingModalDialog({
   return (
     <div
       data-pd-modal-scroll
-      className="fixed inset-0 z-[100] flex max-h-dvh items-end justify-center overflow-y-auto overflow-x-hidden overscroll-contain p-4 sm:items-center sm:p-6"
+      className="fixed inset-0 z-[100] flex max-h-dvh items-center justify-center overflow-y-auto overflow-x-hidden overscroll-contain px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-[max(0.5rem,env(safe-area-inset-top))] sm:px-6 sm:py-6"
       role="presentation"
     >
       <button
@@ -104,12 +104,12 @@ function BookingModalDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-[101] flex min-h-0 w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-border-subtle bg-card shadow-2xl max-h-[min(92dvh,880px)] sm:max-h-[90dvh] lg:max-w-5xl lg:flex-row"
+        className="relative z-[101] mx-auto flex h-[min(88dvh,calc(100dvh-1.25rem))] w-full min-h-0 max-w-lg flex-col overflow-hidden rounded-2xl border border-border-subtle bg-card shadow-2xl sm:h-[min(90dvh,880px)] sm:max-w-4xl lg:max-w-5xl lg:flex-row"
       >
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-3 top-3 z-[102] flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle bg-card/95 text-cream shadow-sm transition hover:border-gold hover:text-gold"
+          className="absolute right-2 top-2 z-[102] flex h-11 w-11 touch-manipulation items-center justify-center rounded-full border border-border-subtle bg-card/95 text-cream shadow-sm transition hover:border-gold hover:text-gold sm:right-3 sm:top-3 sm:h-10 sm:w-10"
           aria-label="Close"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -122,10 +122,10 @@ function BookingModalDialog({
           </svg>
         </button>
 
-        <div className="relative aspect-video w-full shrink-0 bg-black lg:aspect-auto lg:w-[42%] lg:min-h-[320px]">
+        <div className="relative aspect-video max-h-[30dvh] w-full shrink-0 overflow-hidden bg-black sm:max-h-[34dvh] lg:aspect-auto lg:min-h-0 lg:w-[42%] lg:max-w-[42%] lg:self-stretch lg:shrink-0">
           <video
             ref={videoRef}
-            className="h-full w-full object-cover"
+            className="h-full min-h-[120px] w-full min-w-0 object-cover lg:absolute lg:inset-0 lg:min-h-0"
             muted
             loop
             playsInline
@@ -137,28 +137,28 @@ function BookingModalDialog({
             className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:bg-gradient-to-r"
             aria-hidden
           />
-          <p className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white/95 drop-shadow lg:bottom-8 lg:left-6 lg:right-6">
+          <p className="absolute bottom-2 left-3 right-12 text-xs font-medium leading-snug text-white/95 drop-shadow sm:bottom-4 sm:left-4 sm:right-4 sm:text-sm lg:bottom-8 lg:left-6 lg:right-6">
             {site.shortName} · {site.addressLine1}
           </p>
         </div>
 
         <div
           data-pd-modal-scroll
-          className="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto overscroll-contain p-6 sm:p-8 lg:max-w-[58%]"
+          className="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto overscroll-contain px-4 py-5 sm:p-8 lg:max-w-[58%]"
         >
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">
             Request a chair
           </p>
           <h2
             id={titleId}
-            className="mt-2 font-serif text-2xl font-semibold text-cream sm:text-3xl"
+            className="mt-2 pr-10 font-serif text-xl font-semibold leading-snug text-cream sm:pr-0 sm:text-3xl"
           >
             Tell us what you need—we will follow up fast
           </h2>
           <p className="mt-2 text-sm text-muted-fg">
             Submit opens your email app with this message to{" "}
-            <span className="font-medium text-cream">{site.email}</span>. Prefer
-            Square? Use the link below.
+            <span className="break-all font-medium text-cream">{site.email}</span>
+            . Prefer Square? Use the link below.
           </p>
 
           <form
@@ -193,11 +193,11 @@ function BookingModalDialog({
                 name="name"
                 required
                 autoComplete="name"
-                className="mt-1.5 w-full rounded-xl border border-border-subtle bg-background px-4 py-3 text-sm text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2"
+                className="mt-1.5 min-h-11 w-full max-w-full rounded-xl border border-border-subtle bg-background px-3 py-2.5 text-base text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2 sm:px-4 sm:py-3 sm:text-sm"
               />
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="min-w-0">
                 <label
                   htmlFor="bm-email"
                   className="text-xs font-semibold uppercase tracking-wider text-muted-fg"
@@ -210,10 +210,10 @@ function BookingModalDialog({
                   type="email"
                   required
                   autoComplete="email"
-                  className="mt-1.5 w-full rounded-xl border border-border-subtle bg-background px-4 py-3 text-sm text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2"
+                  className="mt-1.5 min-h-11 w-full max-w-full rounded-xl border border-border-subtle bg-background px-3 py-2.5 text-base text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2 sm:px-4 sm:py-3 sm:text-sm"
                 />
               </div>
-              <div>
+              <div className="min-w-0">
                 <label
                   htmlFor="bm-phone"
                   className="text-xs font-semibold uppercase tracking-wider text-muted-fg"
@@ -225,7 +225,7 @@ function BookingModalDialog({
                   name="phone"
                   type="tel"
                   autoComplete="tel"
-                  className="mt-1.5 w-full rounded-xl border border-border-subtle bg-background px-4 py-3 text-sm text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2"
+                  className="mt-1.5 min-h-11 w-full max-w-full rounded-xl border border-border-subtle bg-background px-3 py-2.5 text-base text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2 sm:px-4 sm:py-3 sm:text-sm"
                 />
               </div>
             </div>
@@ -240,7 +240,7 @@ function BookingModalDialog({
                 id="bm-service"
                 name="service"
                 required
-                className="mt-1.5 w-full rounded-xl border border-border-subtle bg-background px-4 py-3 text-sm text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2"
+                className="mt-1.5 min-h-11 w-full max-w-full rounded-xl border border-border-subtle bg-background px-3 py-2.5 text-base text-cream outline-none ring-gold/30 focus:border-gold/50 focus:ring-2 sm:px-4 sm:py-3 sm:text-sm"
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -265,12 +265,12 @@ function BookingModalDialog({
                 name="message"
                 rows={3}
                 placeholder="e.g. Weekday after 5pm, Saturday morning…"
-                className="mt-1.5 w-full resize-none rounded-xl border border-border-subtle bg-background px-4 py-3 text-sm text-cream outline-none ring-gold/30 placeholder:text-muted-fg/60 focus:border-gold/50 focus:ring-2"
+                className="mt-1.5 w-full max-w-full resize-none rounded-xl border border-border-subtle bg-background px-3 py-2.5 text-base text-cream outline-none ring-gold/30 placeholder:text-muted-fg/60 focus:border-gold/50 focus:ring-2 sm:px-4 sm:py-3 sm:text-sm"
               />
             </div>
             <button
               type="submit"
-              className="mt-2 inline-flex h-12 items-center justify-center border-2 border-gold bg-gold text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-gold-hover hover:bg-gold-hover"
+              className="mt-2 inline-flex min-h-12 w-full touch-manipulation items-center justify-center border-2 border-gold bg-gold px-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-gold-hover hover:bg-gold-hover"
             >
               Send request via email
             </button>

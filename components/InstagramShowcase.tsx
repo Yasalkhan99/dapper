@@ -12,6 +12,7 @@ function PlayCard({
   imageSrc,
   imageAlt,
   badge,
+  imageClassName = "object-cover object-[52%_42%]",
 }: {
   href: string;
   title: string;
@@ -19,6 +20,7 @@ function PlayCard({
   imageSrc: string;
   imageAlt: string;
   badge: string;
+  imageClassName?: string;
 }) {
   return (
     <Link
@@ -31,7 +33,8 @@ function PlayCard({
         src={imageSrc}
         alt={imageAlt}
         fill
-        className="object-cover transition duration-500 group-hover:scale-[1.03]"
+        quality={90}
+        className={`transition duration-500 group-hover:scale-[1.03] ${imageClassName}`}
         sizes="(min-width: 1024px) 40vw, 100vw"
       />
       <div
@@ -119,6 +122,7 @@ export function InstagramShowcase() {
             imageSrc={media.download2}
             imageAlt="Inside Pretty Dapper barbershop"
             badge="Play reel on Instagram"
+            imageClassName="object-cover object-[58%_38%]"
           />
           <PlayCard
             href={instagram.featuredPostUrl}
@@ -127,6 +131,7 @@ export function InstagramShowcase() {
             imageSrc={media.imagesDefault}
             imageAlt="Pretty Dapper shop detail"
             badge="View post on Instagram"
+            imageClassName="object-cover object-[32%_55%]"
           />
         </div>
       </div>
