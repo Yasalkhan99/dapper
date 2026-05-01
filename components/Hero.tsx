@@ -1,3 +1,4 @@
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import Link from "next/link";
 import { bookingHref, site, workingHoursSummary } from "@/lib/site";
 import { media } from "@/lib/media";
@@ -28,7 +29,7 @@ export function Hero() {
         <div className="bg-grain pointer-events-none absolute inset-0" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[min(100dvh,920px)] max-w-6xl flex-col justify-end gap-10 px-5 py-16 sm:px-8 lg:min-h-[100dvh] lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:py-24">
+      <div className="relative z-10 mx-auto flex min-h-[min(100dvh,920px)] max-w-6xl flex-col justify-end gap-10 px-5 pt-28 pb-36 sm:px-8 sm:pb-44 lg:min-h-[100dvh] lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:pt-24 lg:pb-28">
         <div className="max-w-xl lg:max-w-2xl">
           <p className="mb-2 font-serif text-3xl italic text-gold sm:text-4xl md:text-5xl">
             Stylish
@@ -43,22 +44,26 @@ export function Hero() {
             {site.name} on 10th Ave—LGBTQ+ friendly cuts, color, beard care, and
             straight razor shaves. Master & Junior barbers, one standard.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link
-              href={book}
-              className="inline-flex h-12 items-center justify-center border-2 border-gold bg-gold px-8 text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors hover:border-gold-hover hover:bg-gold-hover"
-              {...(book.startsWith("http")
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-            >
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <BookModalTrigger variant="primary" className="!px-8 !tracking-[0.2em]">
               Book your spot
-            </Link>
+            </BookModalTrigger>
             <Link
               href="#pricing"
               className="inline-flex h-12 items-center justify-center border border-border-subtle bg-card/90 px-8 text-xs font-bold uppercase tracking-[0.15em] text-cream shadow-sm backdrop-blur-sm transition-colors hover:border-gold/50"
             >
               View pricing
             </Link>
+            {book.startsWith("http") ? (
+              <Link
+                href={book}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center text-xs font-semibold uppercase tracking-wider text-gold underline-offset-2 hover:text-gold-hover hover:underline sm:text-left"
+              >
+                Open Square booking ↗
+              </Link>
+            ) : null}
           </div>
         </div>
 

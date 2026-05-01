@@ -1,7 +1,8 @@
-import Link from "next/link";
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import { SectionBackdrop } from "@/components/SectionBackdrop";
 import { media } from "@/lib/media";
 import { bookingHref, site } from "@/lib/site";
+import Link from "next/link";
 
 export function BookBanner() {
   const book = bookingHref();
@@ -21,22 +22,29 @@ export function BookBanner() {
           Same-day spots sometimes open after 11:00 a.m.—reserve through Square,
           or call {site.phoneDisplay} and we will find you a chair.
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href={book}
-            className="inline-flex h-12 min-w-[200px] items-center justify-center border-2 border-gold bg-gold px-10 text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors hover:border-gold-hover hover:bg-gold-hover"
-            {...(book.startsWith("http")
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
+          <BookModalTrigger
+            variant="primary"
+            className="!min-w-[200px] !px-10 !tracking-[0.2em]"
           >
             Book your spot
-          </Link>
+          </BookModalTrigger>
           <a
             href={`tel:${site.phoneTel}`}
             className="inline-flex h-12 min-w-[200px] items-center justify-center border border-border-subtle bg-card/90 px-10 text-xs font-bold uppercase tracking-[0.15em] text-cream shadow-sm transition-colors hover:border-gold/50"
           >
             Call the shop
           </a>
+          {book.startsWith("http") ? (
+            <Link
+              href={book}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold uppercase tracking-wider text-gold underline-offset-2 hover:text-gold-hover hover:underline"
+            >
+              Square ↗
+            </Link>
+          ) : null}
         </div>
       </div>
     </section>

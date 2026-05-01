@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookingModalProvider } from "@/components/booking/BookingModal";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -52,7 +53,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <BookingModalProvider>{children}</BookingModalProvider>
       </body>
     </html>
   );

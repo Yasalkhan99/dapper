@@ -1,5 +1,8 @@
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import { SectionBackdrop } from "@/components/SectionBackdrop";
+import { bookingHref } from "@/lib/site";
 import { media } from "@/lib/media";
+import Link from "next/link";
 
 const highlights = [
   {
@@ -47,6 +50,7 @@ const highlights = [
 ];
 
 export function CareHighlights() {
+  const book = bookingHref();
   return (
     <section className="relative overflow-hidden border-t border-gold/20 bg-grain py-20 sm:py-28">
       <SectionBackdrop
@@ -85,6 +89,21 @@ export function CareHighlights() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-14 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+          <BookModalTrigger variant="primary">Book with us</BookModalTrigger>
+          <BookModalTrigger variant="outline">Send a request</BookModalTrigger>
+          {book.startsWith("http") ? (
+            <Link
+              href={book}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold uppercase tracking-wider text-gold underline-offset-2 hover:text-gold-hover hover:underline"
+            >
+              Square ↗
+            </Link>
+          ) : null}
+        </div>
       </div>
     </section>
   );

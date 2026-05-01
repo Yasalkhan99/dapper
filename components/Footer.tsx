@@ -1,3 +1,4 @@
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import { instagram } from "@/lib/instagram";
 import { site, workingHoursSummary } from "@/lib/site";
 import Link from "next/link";
@@ -43,9 +44,12 @@ export function Footer() {
             <Link href="#instagram" className="hover:text-gold">
               Reels
             </Link>
-            <Link href="#book" className="hover:text-gold">
+            <BookModalTrigger
+              variant="link"
+              className="block w-fit !p-0 !text-left !text-sm !font-normal !text-muted-fg !no-underline hover:!text-gold"
+            >
               Book
-            </Link>
+            </BookModalTrigger>
           </nav>
         </div>
 

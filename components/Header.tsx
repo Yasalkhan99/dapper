@@ -1,5 +1,6 @@
 "use client";
 
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import { bookingHref, site } from "@/lib/site";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -57,6 +58,12 @@ export function Header() {
             >
               {site.phoneDisplay}
             </a>
+            <span className="hidden text-border-subtle sm:inline" aria-hidden>
+              |
+            </span>
+            <BookModalTrigger variant="link" className="!text-xs !font-bold !uppercase !tracking-wider">
+              Book
+            </BookModalTrigger>
           </div>
         </div>
       </div>
@@ -92,15 +99,22 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link
-              href={book}
-              className="hidden border-2 border-gold bg-gold px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:border-gold-hover hover:bg-gold-hover sm:inline-flex"
-              {...(book.startsWith("http")
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
+            <BookModalTrigger
+              variant="primary"
+              className="hidden !px-4 !py-2 sm:inline-flex"
             >
               Book
-            </Link>
+            </BookModalTrigger>
+            {book.startsWith("http") ? (
+              <Link
+                href={book}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden text-[10px] font-semibold uppercase tracking-wider text-muted-fg underline-offset-2 hover:text-gold hover:underline lg:inline"
+              >
+                Square
+              </Link>
+            ) : null}
 
             <button
               type="button"
@@ -146,16 +160,13 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href={book}
-              className="mt-4 border-2 border-gold bg-gold py-3 text-center text-sm font-bold uppercase tracking-wider text-white hover:bg-gold-hover"
-              onClick={() => setOpen(false)}
-              {...(book.startsWith("http")
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
+            <BookModalTrigger
+              variant="primary"
+              className="mt-4 !w-full !py-3"
+              onOpen={() => setOpen(false)}
             >
               Book
-            </Link>
+            </BookModalTrigger>
           </nav>
         </div>
       </div>

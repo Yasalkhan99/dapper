@@ -1,5 +1,8 @@
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import { SectionBackdrop } from "@/components/SectionBackdrop";
+import { bookingHref } from "@/lib/site";
 import { media } from "@/lib/media";
+import Link from "next/link";
 
 type ServiceItem = {
   name: string;
@@ -163,6 +166,7 @@ function PricingRow({ item }: { item: ServiceItem }) {
 }
 
 export function Services() {
+  const book = bookingHref();
   return (
     <section
       id="pricing"
@@ -186,6 +190,20 @@ export function Services() {
             Clear timing, clear pricing—book on Square and layer add-ons on the
             next screen.
           </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <BookModalTrigger variant="primary">Book a service</BookModalTrigger>
+            <BookModalTrigger variant="outline">Quick request</BookModalTrigger>
+            {book.startsWith("http") ? (
+              <Link
+                href={book}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold uppercase tracking-wider text-gold underline-offset-2 hover:text-gold-hover hover:underline"
+              >
+                Square ↗
+              </Link>
+            ) : null}
+          </div>
         </div>
 
         <div className="mt-12 space-y-16 sm:mt-20">

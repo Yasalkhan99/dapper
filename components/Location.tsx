@@ -1,3 +1,4 @@
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import { bookingHref, site, workingHours } from "@/lib/site";
 import Link from "next/link";
 
@@ -85,14 +86,17 @@ export function Location() {
               <span className="font-medium text-cream">Powered by Square.</span>
             </p>
             <div className="mt-8 flex flex-col gap-3">
+              <BookModalTrigger variant="primary" className="!h-12 !text-sm">
+                Request a spot
+              </BookModalTrigger>
               {hasSquareLink ? (
                 <Link
                   href={book}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center border-2 border-gold bg-gold text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-gold-hover hover:bg-gold-hover"
+                  className="inline-flex h-12 items-center justify-center border-2 border-gold/50 bg-transparent text-sm font-bold uppercase tracking-wider text-gold transition-colors hover:border-gold hover:bg-gold/10"
                 >
-                  Book on Square
+                  Book on Square ↗
                 </Link>
               ) : (
                 <p className="border border-border-subtle bg-background/50 px-4 py-3 text-sm leading-relaxed text-muted-fg">

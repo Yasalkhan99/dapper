@@ -1,6 +1,8 @@
+import { BookModalTrigger } from "@/components/booking/BookingModal";
 import Image from "next/image";
 import Link from "next/link";
 import { instagram } from "@/lib/instagram";
+import { bookingHref } from "@/lib/site";
 import { media } from "@/lib/media";
 
 function PlayCard({
@@ -58,6 +60,7 @@ function PlayCard({
 }
 
 export function InstagramShowcase() {
+  const book = bookingHref();
   return (
     <section
       id="instagram"
@@ -75,7 +78,10 @@ export function InstagramShowcase() {
             Embedded Instagram players often look empty in a normal browser. Tap
             a card below to watch on Instagram, or go straight to all reels.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <BookModalTrigger variant="primary" className="!px-6">
+              Book a cut
+            </BookModalTrigger>
             <Link
               href={instagram.reelsUrl}
               target="_blank"
@@ -92,6 +98,16 @@ export function InstagramShowcase() {
             >
               Profile
             </Link>
+            {book.startsWith("http") ? (
+              <Link
+                href={book}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold uppercase tracking-wider text-gold underline-offset-2 hover:text-gold-hover hover:underline"
+              >
+                Square ↗
+              </Link>
+            ) : null}
           </div>
         </div>
 
