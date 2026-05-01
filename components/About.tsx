@@ -24,7 +24,8 @@ export function About() {
             src={media.download1}
             alt="Cut and style at Pretty Dapper"
             fill
-            className="object-cover object-center"
+            quality={90}
+            className="object-cover object-[44%_28%]"
             sizes="(min-width: 1024px) 50vw, 100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
